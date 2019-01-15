@@ -1,35 +1,37 @@
-<h1>EAT DA BURGERS</h1>
-
-<h2>Burgers that are ready to eat!</h2>
-
-<ul>
-    {{#each burgers}}
-        {{#unless devoured}}
-            {{id}}. {{burger_name}}<form action="/{{id}}?_method=PUT" method="POST">
-                <input type="hidden" name="devoured" value="false">
-                <button type="submit">Eat Me!</button>
-            </form>
-        {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Burgers that have been devoured</h2>
-
-<ul>
-    {{#each burgers}}
-    <li>
-        {{#if devoured}}
-            {{id}}. {{burger_name}}
-        {{/if}}  
-    </li>    
-    {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form" action="/" method="POST">
-    <div class="form-group">
-        <label for="burger-name">Burger Name: </label>
-        <input type="text" id="burgername" name="burger_name">
-        <button type="submit">Add Burger</button>
+<div class="container">
+    <div class="jumbotron">
+        <div class="text-center">
+            <img src ="/assets/img/burger.png" class="rounded" alt="burger" height="100" width="100">
+        </div>
+        <h1 class="display-4 text-center mt-2">EAT DA BURGERS</h1>
+        <hr class="my-4">
+        <form class="create-form" action="/" method="POST">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Add a burger you would like to eat" name="burger_name">
+                <button class="btn btn-outline-success" type="submit">Submit</button>
+            </div>
+        </form>
     </div>
-</form>
+    <div class="row">
+        <div class="col-6">
+            <div class="alert alert-success" role="alert">Burgers that are ready to eat!</div>
+            {{#each burgers}}
+                {{#unless devoured}}
+                    <form action="/{{id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="devoured" value="false">
+                        <button type="submit" class="btn btn-outline-success">{{id}}. {{burger_name}}</button>
+                    </form>
+                    <hr class="my-2">
+                {{/unless}}
+            {{/each}}
+        </div>
+        <div class="col-6">
+            <div class="alert alert-secondary" role="alert">Burgers that have been devoured!</div>
+            {{#each burgers}}
+                {{#if devoured}}
+                    <button type="button" class="btn btn-secondary mt-2 mr-2" disabled>{{id}}. {{burger_name}}</button>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>

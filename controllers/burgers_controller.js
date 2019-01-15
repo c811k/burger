@@ -26,11 +26,7 @@ router.put("/:id", (req, res) => {
     burger.upateOne({
         devoured: true
     }, condition, (result) => {
-        if (result.changedRows === 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
+        res.redirect("/");
     });
 });
 

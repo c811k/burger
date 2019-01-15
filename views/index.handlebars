@@ -5,8 +5,7 @@
 <ul>
     {{#each burgers}}
         {{#unless devoured}}
-            {{id}}. {{burger_name}}
-            <form action="/{{id}}?_method=PUT" method="POST">
+            {{id}}. {{burger_name}}<form action="/{{id}}?_method=PUT" method="POST">
                 <input type="hidden" name="devoured" value="false">
                 <button type="submit">Eat Me!</button>
             </form>

@@ -14,13 +14,20 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <div class="alert alert-success" role="alert">Burgers that are ready to eat!</div>
+            <div class="alert alert-success mb-4" role="alert">Burgers that are ready to eat!</div>
             {{#each burgers}}
                 {{#unless devoured}}
                     <form action="/{{id}}?_method=PUT" method="POST">
                         <input type="hidden" name="devoured" value="false">
-                        <button class="btn btn-outline-dark" disabled>{{id}}. {{burger_name}}</button>
-                        <button type="submit" class="btn btn-outline-success">Devour it!</button>
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-outline-dark" disabled>{{id}}. {{burger_name}}</button>
+                            </div>
+                            <div class="col-6 text-right">
+                            <button type="submit" class="btn btn-outline-success">Devour it!</button>
+                            </div>
+                        </div>
+                        
                     </form>
                     <hr class="my-2">
                 {{/unless}}

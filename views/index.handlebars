@@ -19,7 +19,8 @@
                 {{#unless devoured}}
                     <form action="/{{id}}?_method=PUT" method="POST">
                         <input type="hidden" name="devoured" value="false">
-                        <button type="submit" class="btn btn-outline-success">{{id}}. {{burger_name}}</button>
+                        <button class="btn btn-outline-dark" disabled>{{id}}. {{burger_name}}</button>
+                        <button type="submit" class="btn btn-outline-success">Devour it!</button>
                     </form>
                     <hr class="my-2">
                 {{/unless}}
